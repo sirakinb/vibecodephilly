@@ -13,7 +13,7 @@ export default function EventsPage() {
         eyebrow="Events"
         title={
           <>
-            Every meetup, in pictures
+            Every event, in pictures
           </>
         }
       >
@@ -33,7 +33,7 @@ export default function EventsPage() {
                 {e.date}
               </time>
             </div>
-            <PhotoGrid photos={e.photos} title={`Vibe Code Philly Meetup ${String(e.n).padStart(2, "0")}`} date={e.date} />
+            <PhotoGrid photos={e.photos} title={`Vibe Code Philly Event ${String(e.n).padStart(2, "0")}`} date={e.date} />
           </section>
         ))}
       </Container>

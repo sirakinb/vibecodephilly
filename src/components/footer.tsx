@@ -9,7 +9,7 @@ export function Footer() {
         <div>
           <Image src="/wordmark-dark.png" alt="Vibe Code PHL" width={596} height={336} className="h-9 w-auto" />
           <p className="mt-5 max-w-sm text-sm text-fg/60">
-            A Philadelphia community for people working with AI. Meetups, talks, workshops and a
+            A Philadelphia community for people working with AI. Events, talks, workshops and a
             talent network for every skill set.
           </p>
         </div>

@@ -17,7 +17,7 @@ const tools = ["ChatGPT", "Claude", "Gemini", "Cursor", "Claude Code", "Lovable"
 
 const steps = [
   ["Join", "Tell us about your skills and what you're looking for. Takes two minutes."],
-  ["Show up", "Come to meetups, meet people and let the community get to know you."],
+  ["Show up", "Come to events, meet people and let the community get to know you."],
   ["Get connected", "When an opportunity fits you, we make the intro."],
 ];
 
@@ -74,7 +74,7 @@ export default function TalentPage() {
           kind="talent"
           submit="Join the network"
           note="We'll never share your info without asking."
-          success={{ title: "Welcome to the network", body: "We'll be in touch. In the meantime, come say hi at the next meetup." }}
+          success={{ title: "Welcome to the network", body: "We'll be in touch. In the meantime, come say hi at the next event." }}
           sections={[
             {
               title: "About you",

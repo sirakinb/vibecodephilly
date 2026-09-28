@@ -6,7 +6,7 @@ import { Container, PageHeader } from "@/components/ui";
 export const metadata: Metadata = { title: "Partner" };
 
 const paths = [
-  { word: "Venues", body: "Host a meetup. We bring the community, the programming, and the energy. You bring the room." },
+  { word: "Venues", body: "Host a event. We bring the community, the programming, and the energy. You bring the room." },
   { word: "Tools & sponsors", body: "Put your product in front of people who build with AI every day. Sponsor a night, offer credits, run a workshop." },
   { word: "Schools & orgs", body: "Co-host events, open pathways for students and career switchers, and grow Philly's AI talent together." },
 ];
@@ -22,7 +22,7 @@ export default function PartnerPage() {
           </>
         }
       >
-        <p>Venues, tool companies and local organizations make every meetup possible.</p>
+        <p>Venues, tool companies and local organizations make every event possible.</p>
       </PageHeader>
 
       <Container className="pb-24">
@@ -63,7 +63,7 @@ export default function PartnerPage() {
             {
               title: "The idea",
               fields: [
-                { name: "type", label: "Interested in", type: "chips", options: ["Hosting a meetup", "Sponsoring", "Credits / perks", "Running a workshop", "Something else"] },
+                { name: "type", label: "Interested in", type: "chips", options: ["Hosting a event", "Sponsoring", "Credits / perks", "Running a workshop", "Something else"] },
                 { name: "details", label: "Tell us more", type: "textarea", max: 800, placeholder: "Dates, audience, what you'd like to do together." },
               ],
             },

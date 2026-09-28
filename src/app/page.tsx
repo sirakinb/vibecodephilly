@@ -16,7 +16,7 @@ function Sidebar() {
       <div className="overflow-hidden rounded-2xl border border-fg/10">
         <div className="flex items-center justify-between border-b border-fg/10 px-4 py-3 text-[13px]">
           <span className="flex items-center gap-2 font-medium">
-            <span className="size-2 rounded-full bg-pink" /> Next meetup
+            <span className="size-2 rounded-full bg-pink" /> Next event
           </span>
           <span className="text-fg/50">Limited spots</span>
         </div>
@@ -120,10 +120,10 @@ export default function Home() {
         {events.map((e) => (
           <section key={e.n}>
             <p className="mb-3 text-[13px]">
-              <span className="font-medium">Meetup {String(e.n).padStart(2, "0")}</span>
+              <span className="font-medium">Event {String(e.n).padStart(2, "0")}</span>
               <span className="ml-2 text-fg/50">{e.date}</span>
             </p>
-            <PhotoGrid photos={e.photos} title={`Vibe Code Philly Meetup ${String(e.n).padStart(2, "0")}`} date={e.date} />
+            <PhotoGrid photos={e.photos} title={`Vibe Code Philly Event ${String(e.n).padStart(2, "0")}`} date={e.date} />
           </section>
         ))}
       </div>
