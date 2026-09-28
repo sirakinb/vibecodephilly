@@ -29,14 +29,14 @@ export default function HirePage() {
 
       <Container className="grid gap-4 pb-24 md:grid-cols-3">
         {offers.map((o) => (
-          <div key={o.title} className="border-t border-cream/15 pt-6">
+          <div key={o.title} className="border-t border-fg/15 pt-6">
             <h3 className="display text-3xl">{o.title}</h3>
-            <p className="mt-3 text-cream/60">{o.body}</p>
+            <p className="mt-3 text-fg/60">{o.body}</p>
           </div>
         ))}
       </Container>
 
-      <section className="border-t border-cream/10 py-24">
+      <section className="border-t border-fg/10 py-24">
         <Container className="max-w-4xl">
           <p className="label mb-4">Tell us what you need</p>
           <h2 className="display mb-10 text-5xl md:text-6xl">

@@ -38,15 +38,15 @@ export default function BuildersPage() {
 
       <Container className="grid gap-4 pb-24 md:grid-cols-4">
         {perks.map((p, i) => (
-          <div key={p.title} className="rounded-2xl border border-cream/10 bg-ink-2/60 p-6">
+          <div key={p.title} className="rounded-2xl border border-fg/10 bg-base-2/60 p-6">
             <p className="font-mono text-sm text-pink">{String(i + 1).padStart(2, "0")}</p>
             <h3 className="display mt-6 text-2xl">{p.title}</h3>
-            <p className="mt-3 text-sm text-cream/60">{p.body}</p>
+            <p className="mt-3 text-sm text-fg/60">{p.body}</p>
           </div>
         ))}
       </Container>
 
-      <section className="border-y border-cream/10 bg-ink-2/60 py-24">
+      <section className="border-y border-fg/10 bg-base-2/60 py-24">
         <Container className="grid items-center gap-12 md:grid-cols-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
             <Image src="/events/e1-13.jpg" alt="Two builders pairing on a laptop" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
@@ -59,7 +59,7 @@ export default function BuildersPage() {
                   <span className="display text-5xl text-pink">{i + 1}</span>
                   <div>
                     <p className="display text-3xl">{t}</p>
-                    <p className="mt-2 text-cream/60">{b}</p>
+                    <p className="mt-2 text-fg/60">{b}</p>
                   </div>
                 </li>
               ))}

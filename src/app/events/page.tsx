@@ -26,9 +26,9 @@ export default function EventsPage() {
       <Container className="space-y-28 pb-28">
         {events.map((e) => (
           <section key={e.n} id={`event-${e.n}`} className="scroll-mt-24">
-            <div className="mb-8 grid gap-4 border-t border-cream/15 pt-8 md:grid-cols-[auto_1fr_auto] md:items-baseline md:gap-10">
+            <div className="mb-8 grid gap-4 border-t border-fg/15 pt-8 md:grid-cols-[auto_1fr_auto] md:items-baseline md:gap-10">
               <p className="display text-7xl text-pink">{String(e.n).padStart(2, "0")}</p>
-              <p className="max-w-xl text-lg text-cream/70">{e.blurb}</p>
+              <p className="max-w-xl text-lg text-fg/70">{e.blurb}</p>
               <time dateTime={e.iso} className="label">
                 {e.date}
               </time>
@@ -38,10 +38,10 @@ export default function EventsPage() {
         ))}
       </Container>
 
-      <section className="border-t border-cream/10 bg-ink-2/60 py-24">
+      <section className="border-t border-fg/10 bg-base-2/60 py-24">
         <Container>
           <p className="label mb-4">Recent talks</p>
-          <ol className="divide-y divide-cream/10 border-y border-cream/10">
+          <ol className="divide-y divide-fg/10 border-y border-fg/10">
             {talks.map((t, i) => (
               <li key={t} className="flex items-baseline gap-6 py-5">
                 <span className="font-mono text-sm text-pink">{String(i + 1).padStart(2, "0")}</span>
@@ -59,7 +59,7 @@ export default function EventsPage() {
             <h2 className="display text-5xl md:text-6xl">
               Show us what you built<PinkDot />
             </h2>
-            <p className="mt-6 text-cream/70">
+            <p className="mt-6 text-fg/70">
               Five-minute demos and 10–15 minute talks. Rough edges welcome — the best demos are the ones that
               almost didn&apos;t work.
             </p>

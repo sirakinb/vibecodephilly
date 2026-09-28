@@ -9,24 +9,24 @@ export type Field =
   | { name: string; label: string; type: "chips"; options: string[]; single?: boolean };
 
 const input =
-  "w-full rounded-lg border border-cream/15 bg-ink-2 px-4 py-3 text-cream placeholder:text-cream/30 outline-none transition focus:border-pink";
+  "w-full rounded-lg border border-fg/15 bg-base-2 px-4 py-3 text-fg placeholder:text-fg/30 outline-none transition focus:border-pink";
 
 export function SignupForm({ kind, fields, submit }: { kind: string; fields: Field[]; submit: string }) {
   const [state, action, pending] = useActionState<FormState, FormData>(submitForm, null);
 
   if (state?.ok) {
     return (
-      <div className="rounded-2xl border border-cream/10 bg-ink-2 p-10 text-center">
+      <div className="rounded-2xl border border-fg/10 bg-base-2 p-10 text-center">
         <p className="display text-4xl">
           You&apos;re in<span className="text-pink">.</span>
         </p>
-        <p className="mt-3 text-cream/60">{state.message}</p>
+        <p className="mt-3 text-fg/60">{state.message}</p>
       </div>
     );
   }
 
   return (
-    <form action={action} className="grid gap-5 rounded-2xl border border-cream/10 bg-ink-2/50 p-6 md:grid-cols-2 md:p-10">
+    <form action={action} className="grid gap-5 rounded-2xl border border-fg/10 bg-base-2/50 p-6 md:grid-cols-2 md:p-10">
       <input type="hidden" name="kind" value={kind} />
       {fields.map((f) => {
         const span = f.type === "text" || f.type === "email" || f.type === "url" ? (f.half ? "" : "md:col-span-2") : "md:col-span-2";
@@ -39,7 +39,7 @@ export function SignupForm({ kind, fields, submit }: { kind: string; fields: Fie
                   {f.options.map((o) => (
                     <label key={o} className="cursor-pointer">
                       <input type={f.single ? "radio" : "checkbox"} name={f.name} value={o} className="peer sr-only" />
-                      <span className="inline-block rounded-full border border-cream/15 px-4 py-2 text-sm text-cream/70 transition peer-checked:border-pink peer-checked:bg-pink/15 peer-checked:text-cream peer-focus-visible:ring-2 peer-focus-visible:ring-pink">
+                      <span className="inline-block rounded-full border border-fg/15 px-4 py-2 text-sm text-fg/70 transition peer-checked:border-pink peer-checked:bg-pink peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-pink">
                         {o}
                       </span>
                     </label>
@@ -67,7 +67,7 @@ export function SignupForm({ kind, fields, submit }: { kind: string; fields: Fie
         <button
           type="submit"
           disabled={pending}
-          className="rounded-full bg-pink px-7 py-3 text-sm font-medium text-cream transition hover:brightness-110 disabled:opacity-50"
+          className="rounded-full bg-pink px-7 py-3 text-sm font-medium text-white transition hover:brightness-110 disabled:opacity-50"
         >
           {pending ? "Sending…" : submit}
         </button>

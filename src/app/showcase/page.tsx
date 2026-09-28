@@ -27,7 +27,7 @@ export default function ShowcasePage() {
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className="flex aspect-[4/3] flex-col justify-end rounded-2xl border border-dashed border-cream/15 p-6"
+              className="flex aspect-[4/3] flex-col justify-end rounded-2xl border border-dashed border-fg/15 p-6"
             >
               <p className="label">Your project here</p>
             </div>

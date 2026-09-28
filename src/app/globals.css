@@ -1,38 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #111318;
-  --ink-2: #181b22;
-  --ink-3: #20242d;
-  --cream: #fff4ea;
+  --base: #ffffff;
+  --base-2: #f6f5f3;
+  --base-3: #ecebe7;
+  --fg: #111318;
   --pink: #fe296b;
 }
 
 @theme inline {
-  --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
-  --color-ink-3: var(--ink-3);
-  --color-cream: var(--cream);
+  --color-base: var(--base);
+  --color-base-2: var(--base-2);
+  --color-base-3: var(--base-3);
+  --color-fg: var(--fg);
   --color-pink: var(--pink);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-body);
   --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-fraunces);
+  --font-display: var(--font-inter-tight);
 }
 
 html {
-  background: var(--ink);
-  color-scheme: dark;
+  background: var(--base);
+  color-scheme: light;
 }
 
 body {
-  background: var(--ink);
-  color: var(--cream);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: var(--base);
+  color: var(--fg);
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 ::selection {
   background: var(--pink);
-  color: var(--cream);
+  color: #fff;
 }
 
 .label {
@@ -40,13 +40,13 @@ body {
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: color-mix(in oklab, var(--cream) 55%, transparent);
+  color: color-mix(in oklab, var(--fg) 50%, transparent);
 }
 
 .display {
-  font-family: var(--font-fraunces), Georgia, serif;
-  font-weight: 500;
-  letter-spacing: -0.03em;
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.04em;
   line-height: 0.95;
 }
 

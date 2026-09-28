@@ -6,7 +6,7 @@ export function Gallery({ photos, alt }: { photos: Photo[]; alt: string }) {
   return (
     <div className="columns-2 gap-3 md:columns-3 lg:columns-4 [&>*]:mb-3">
       {photos.map((photo, i) => (
-        <div key={photo.src} className="overflow-hidden rounded-xl bg-ink-2 break-inside-avoid">
+        <div key={photo.src} className="overflow-hidden rounded-xl bg-base-2 break-inside-avoid">
           <Image
             src={photo.src}
             alt={`${alt} — photo ${i + 1}`}

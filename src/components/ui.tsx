@@ -12,13 +12,14 @@ export function Button({
 }: {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "ghost";
+  variant?: "primary" | "ghost" | "inverse";
 }) {
   const external = href.startsWith("http");
-  const cls =
-    variant === "primary"
-      ? "bg-pink text-cream hover:brightness-110"
-      : "border border-cream/20 text-cream hover:border-cream/60";
+  const cls = {
+    primary: "bg-pink text-white hover:brightness-110",
+    ghost: "border border-fg/20 text-fg hover:border-fg/60",
+    inverse: "border border-white/25 text-white hover:border-white/70",
+  }[variant];
   const className = `inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition ${cls}`;
   return external ? (
     <a href={href} target="_blank" rel="noreferrer" className={className}>
@@ -38,7 +39,7 @@ export function PageHeader({ eyebrow, title, children }: { eyebrow: string; titl
         <span className="text-pink">●</span> {eyebrow}
       </p>
       <h1 className="display max-w-5xl text-6xl md:text-8xl">{title}</h1>
-      {children && <div className="mt-8 max-w-2xl text-lg text-cream/70">{children}</div>}
+      {children && <div className="mt-8 max-w-2xl text-lg text-fg/70">{children}</div>}
     </Container>
   );
 }
