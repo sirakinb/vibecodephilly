@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { SignupForm } from "@/components/form";
+import { FormBlock, SignupForm } from "@/components/form";
 import { PhotoGrid } from "@/components/photo-grid";
 import { Button, Container, PageHeader } from "@/components/ui";
-import { events, links, talks } from "@/data/site";
+import { events, links } from "@/data/site";
 
 export const metadata: Metadata = { title: "Events" };
 
@@ -38,46 +38,38 @@ export default function EventsPage() {
         ))}
       </Container>
 
-      <section className="border-t border-fg/10 bg-base-2/60 py-24">
-        <Container>
-          <p className="label mb-4">Recent talks</p>
-          <ol className="divide-y divide-fg/10 border-y border-fg/10">
-            {talks.map((t, i) => (
-              <li key={t} className="flex items-baseline gap-6 py-5">
-                <span className="font-mono text-sm text-pink">{String(i + 1).padStart(2, "0")}</span>
-                <span className="display text-2xl md:text-3xl">{t}</span>
-              </li>
-            ))}
-          </ol>
-        </Container>
-      </section>
-
-      <section id="speak" className="py-24">
-        <Container className="grid gap-12 md:grid-cols-[1fr_1.4fr]">
-          <div>
-            <p className="label mb-4">Speak or demo</p>
-            <h2 className="display text-3xl md:text-4xl">
-              Show us what you built
-            </h2>
-            <p className="mt-6 text-fg/70">
-              Five-minute demos and 10 to 15 minute talks. Rough edges welcome. The best demos are the ones that
-              almost didn&apos;t work.
-            </p>
-          </div>
-          <SignupForm
-            kind="speak"
-            submit="Apply to speak"
-            fields={[
-              { name: "name", label: "Name", type: "text", required: true, half: true },
-              { name: "email", label: "Email", type: "email", required: true, half: true },
-              { name: "format", label: "Format", type: "chips", options: ["5-min demo", "10 to 15 min talk", "Workshop"], single: true },
-              { name: "title", label: "Working title", type: "text", required: true },
-              { name: "pitch", label: "What will people learn or see?", type: "textarea", required: true },
-              { name: "link", label: "Link (project, repo, video)", type: "url", placeholder: "https://" },
-            ]}
-          />
-        </Container>
-      </section>
+      <FormBlock
+        id="speak"
+        eyebrow="Speak or demo"
+        title="Show us what you built"
+        intro={<p>Five-minute demos and 10 to 15 minute talks. Rough edges welcome. The best demos are the ones that almost didn&apos;t work.</p>}
+        points={["First-time speakers welcome", "We help you shape the talk", "Slides optional"]}
+      >
+        <SignupForm
+          kind="speak"
+          submit="Send application"
+          note="We'll follow up about dates."
+          success={{ title: "Application received", body: "Thanks for putting yourself out there. We'll reach out about a slot." }}
+          sections={[
+            {
+              title: "About you",
+              fields: [
+                { name: "name", label: "Full name", type: "text", required: true, half: true, placeholder: "Jordan Smith" },
+                { name: "email", label: "Email", type: "email", required: true, half: true, placeholder: "you@email.com" },
+              ],
+            },
+            {
+              title: "Your session",
+              fields: [
+                { name: "format", label: "Format", type: "chips", options: ["5 min demo", "10 to 15 min talk", "Workshop"], single: true, required: true },
+                { name: "title", label: "Working title", type: "text", required: true, placeholder: "How I automated my entire inbox" },
+                { name: "pitch", label: "What will people learn or see?", type: "textarea", required: true, max: 500, placeholder: "A few sentences is plenty." },
+                { name: "link", label: "Link", type: "url", placeholder: "Project, repo or video", hint: "Helps us get a feel for it. Not required." },
+              ],
+            },
+          ]}
+        />
+      </FormBlock>
     </>
   );
 }

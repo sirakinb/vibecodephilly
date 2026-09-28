@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { SignupForm } from "@/components/form";
+import { FormBlock, SignupForm } from "@/components/form";
 import { Container, PageHeader } from "@/components/ui";
 import { stacks } from "@/data/site";
 
@@ -61,27 +61,46 @@ export default function TalentPage() {
         </Container>
       </section>
 
-      <section id="join" className="py-24">
-        <Container className="max-w-4xl">
-          <p className="label mb-4">Join the network</p>
-          <h2 className="display mb-10 text-3xl md:text-4xl">Create your profile</h2>
-          <SignupForm
-            kind="talent"
-            submit="Join the talent network"
-            fields={[
-              { name: "name", label: "Name", type: "text", required: true, half: true },
-              { name: "email", label: "Email", type: "email", required: true, half: true },
-              { name: "linkedin", label: "LinkedIn", type: "url", placeholder: "https://linkedin.com/in/…", half: true },
-              { name: "portfolio", label: "Portfolio / GitHub / website", type: "url", placeholder: "https://", half: true },
-              { name: "role", label: "I'm a…", type: "chips", options: ["Developer", "Designer", "Marketer", "Founder", "Product / operator", "Creator", "Student", "Career switcher", "Other"] },
-              { name: "stack", label: "Tools you use", type: "chips", options: stacks },
-              { name: "looking", label: "Open to", type: "chips", options: ["Full-time roles", "Freelance / contract", "Co-founders", "Collaborators", "Just the community"] },
-              { name: "project", label: "Something you've made (link)", type: "url", placeholder: "https://" },
-              { name: "about", label: "Tell us about yourself", type: "textarea", placeholder: "What you do, what you're working on, what you want to learn." },
-            ]}
-          />
-        </Container>
-      </section>
+      <FormBlock
+        id="join"
+        eyebrow="Join the network"
+        title="Create your profile"
+        intro={<p>Tell us who you are and what you work on. We read every one.</p>}
+        points={["Free, always", "Takes about two minutes", "We only reach out when something fits"]}
+      >
+        <SignupForm
+          kind="talent"
+          submit="Join the network"
+          note="We'll never share your info without asking."
+          success={{ title: "Welcome to the network", body: "We'll be in touch. In the meantime, come say hi at the next meetup." }}
+          sections={[
+            {
+              title: "About you",
+              fields: [
+                { name: "name", label: "Full name", type: "text", required: true, half: true, placeholder: "Jordan Smith" },
+                { name: "email", label: "Email", type: "email", required: true, half: true, placeholder: "you@email.com" },
+                { name: "role", label: "What best describes you?", type: "chips", options: ["Developer", "Designer", "Marketer", "Founder", "Product / operator", "Creator", "Student", "Career switcher", "Other"] },
+              ],
+            },
+            {
+              title: "Your work",
+              fields: [
+                { name: "linkedin", label: "LinkedIn", type: "url", half: true, placeholder: "linkedin.com/in/you" },
+                { name: "portfolio", label: "Portfolio or website", type: "url", half: true, placeholder: "yoursite.com" },
+                { name: "project", label: "Something you've made", type: "url", placeholder: "Link to a project, demo or video", hint: "Anything counts: an app, an automation, a site, a prototype." },
+                { name: "stack", label: "Tools you use", type: "chips", options: stacks },
+              ],
+            },
+            {
+              title: "What you're looking for",
+              fields: [
+                { name: "looking", label: "Open to", type: "chips", options: ["Full-time roles", "Freelance / contract", "Co-founders", "Collaborators", "Learning", "Just the community"] },
+                { name: "about", label: "Anything else we should know?", type: "textarea", max: 500, placeholder: "What you're working on, what you want to learn, what you'd like help with." },
+              ],
+            },
+          ]}
+        />
+      </FormBlock>
     </>
   );
 }

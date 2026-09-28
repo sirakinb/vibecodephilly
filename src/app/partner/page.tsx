@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { SignupForm } from "@/components/form";
+import { FormBlock, SignupForm } from "@/components/form";
 import { Container, PageHeader } from "@/components/ui";
 
 export const metadata: Metadata = { title: "Partner" };
@@ -39,25 +39,37 @@ export default function PartnerPage() {
         </div>
       </Container>
 
-      <section className="border-t border-fg/10 py-24">
-        <Container className="max-w-4xl">
-          <p className="label mb-4">Get in touch</p>
-          <h2 className="display mb-10 text-3xl md:text-4xl">
-            Let&apos;s talk
-          </h2>
-          <SignupForm
-            kind="partner"
-            submit="Send"
-            fields={[
-              { name: "name", label: "Your name", type: "text", required: true, half: true },
-              { name: "email", label: "Email", type: "email", required: true, half: true },
-              { name: "org", label: "Organization", type: "text", required: true },
-              { name: "type", label: "Interested in", type: "chips", options: ["Hosting", "Sponsoring", "Credits / perks", "Workshop", "Something else"] },
-              { name: "details", label: "Tell us more", type: "textarea" },
-            ]}
-          />
-        </Container>
-      </section>
+      <FormBlock
+        eyebrow="Get in touch"
+        title="Let's talk"
+        intro={<p>Tell us a little about your organization and what you have in mind. We&apos;ll get back to you within a few days.</p>}
+        points={["Venues and hosts", "Tool companies and sponsors", "Schools and community orgs"]}
+      >
+        <SignupForm
+          kind="partner"
+          submit="Send message"
+          note="We usually reply within a few days."
+          success={{ title: "Message sent", body: "Thanks for reaching out. We'll be in touch soon." }}
+          sections={[
+            {
+              title: "About you",
+              fields: [
+                { name: "name", label: "Full name", type: "text", required: true, half: true, placeholder: "Jordan Smith" },
+                { name: "email", label: "Email", type: "email", required: true, half: true, placeholder: "you@company.com" },
+                { name: "org", label: "Organization", type: "text", required: true, half: true, placeholder: "Company or group" },
+                { name: "website", label: "Website", type: "url", half: true, placeholder: "company.com" },
+              ],
+            },
+            {
+              title: "The idea",
+              fields: [
+                { name: "type", label: "Interested in", type: "chips", options: ["Hosting a meetup", "Sponsoring", "Credits / perks", "Running a workshop", "Something else"] },
+                { name: "details", label: "Tell us more", type: "textarea", max: 800, placeholder: "Dates, audience, what you'd like to do together." },
+              ],
+            },
+          ]}
+        />
+      </FormBlock>
     </>
   );
 }

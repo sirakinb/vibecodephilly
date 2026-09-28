@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SignupForm } from "@/components/form";
+import { FormBlock, SignupForm } from "@/components/form";
 import { Container, PageHeader } from "@/components/ui";
 import { stacks } from "@/data/site";
 
@@ -35,26 +35,37 @@ export default function ShowcasePage() {
         </div>
       </Container>
 
-      <section className="py-16">
-        <Container className="max-w-4xl">
-          <p className="label mb-4">Submit a project</p>
-          <h2 className="display mb-10 text-3xl md:text-4xl">
-            Built something? Show it
-          </h2>
-          <SignupForm
-            kind="showcase"
-            submit="Submit project"
-            fields={[
-              { name: "name", label: "Your name", type: "text", required: true, half: true },
-              { name: "email", label: "Email", type: "email", required: true, half: true },
-              { name: "project", label: "Project name", type: "text", required: true, half: true },
-              { name: "url", label: "Live link", type: "url", required: true, placeholder: "https://", half: true },
-              { name: "stack", label: "Built with", type: "chips", options: stacks },
-              { name: "description", label: "What does it do?", type: "textarea", required: true },
-            ]}
-          />
-        </Container>
-      </section>
+      <FormBlock
+        eyebrow="Submit a project"
+        title="Built something? Show it"
+        intro={<p>Apps, agents, automations, sites, games, experiments. If you made it with AI, it belongs here.</p>}
+        points={["Every project links back to you", "Works in progress welcome", "Featured projects get a demo slot"]}
+      >
+        <SignupForm
+          kind="showcase"
+          submit="Submit project"
+          note="We review submissions before they go live."
+          success={{ title: "Project submitted", body: "Nice work. We'll take a look and let you know when it's up." }}
+          sections={[
+            {
+              title: "About you",
+              fields: [
+                { name: "name", label: "Full name", type: "text", required: true, half: true, placeholder: "Jordan Smith" },
+                { name: "email", label: "Email", type: "email", required: true, half: true, placeholder: "you@email.com" },
+              ],
+            },
+            {
+              title: "The project",
+              fields: [
+                { name: "project", label: "Project name", type: "text", required: true, half: true, placeholder: "What's it called?" },
+                { name: "url", label: "Live link", type: "url", required: true, half: true, placeholder: "yourproject.com" },
+                { name: "stack", label: "Built with", type: "chips", options: stacks },
+                { name: "description", label: "What does it do?", type: "textarea", required: true, max: 400, placeholder: "One or two sentences." },
+              ],
+            },
+          ]}
+        />
+      </FormBlock>
     </>
   );
 }
