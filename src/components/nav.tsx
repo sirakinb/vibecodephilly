@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, Handshake, Sparkles, UsersRound, type LucideIcon } from "lucide-react";
+import { CalendarDays, Handshake, LayoutGrid, UsersRound, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,7 +10,7 @@ const icons: Record<(typeof nav)[number]["icon"], LucideIcon> = {
   events: CalendarDays,
   talent: UsersRound,
   partner: Handshake,
-  showcase: Sparkles,
+  showcase: LayoutGrid,
 };
 
 function Tabs({ className = "" }: { className?: string }) {
