@@ -100,8 +100,8 @@ export default function Home() {
 
         <div className="flex flex-wrap gap-x-8 gap-y-2 text-[13px] text-fg/50">
           <p>
-            <span className="mr-1.5 text-xl font-semibold text-pink">{String(events.length).padStart(2, "0")}</span>
-            meetups so far
+            <span className="mr-1.5 text-xl font-semibold text-pink">200+</span>
+            community members
           </p>
           <p>
             <span className="mr-1.5 text-xl font-semibold text-pink">All</span>
