@@ -20,11 +20,11 @@ export const nextEvent = {
 };
 
 export const nav = [
-  { href: "/events", label: "Events" },
-  { href: "/talent", label: "Talent" },
-  { href: "/partner", label: "Partner" },
-  { href: "/showcase", label: "Showcase" },
-];
+  { href: "/events", label: "Events", icon: "events" },
+  { href: "/talent", label: "Talent", icon: "talent" },
+  { href: "/partner", label: "Partner", icon: "partner" },
+  { href: "/showcase", label: "Showcase", icon: "showcase" },
+] as const;
 
 export type EventRecap = {
   n: number;

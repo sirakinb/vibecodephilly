@@ -5,7 +5,7 @@ import { links, nav } from "@/data/site";
 export function Footer() {
   return (
     <footer className="border-t border-fg/10">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-[1.5fr_1fr_1fr] md:px-8">
+      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-[1.5fr_1fr_1fr] md:px-8">
         <div>
           <Image src="/wordmark-dark.png" alt="Vibe Code PHL" width={596} height={336} className="h-9 w-auto" />
           <p className="mt-5 max-w-sm text-sm text-fg/60">
@@ -48,7 +48,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="mx-auto flex max-w-7xl justify-between px-5 pb-8 text-xs text-fg/40 md:px-8">
+      <div className="mx-auto flex max-w-6xl justify-between px-5 pb-8 text-xs text-fg/40 md:px-8">
         <span>© {new Date().getFullYear()} Vibe Code Philly</span>
         <span className="font-mono">Made in PHL</span>
       </div>
