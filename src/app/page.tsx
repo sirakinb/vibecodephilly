@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeroVideo } from "@/components/hero-video";
-import { events, links } from "@/data/site";
+import { PhotoGrid } from "@/components/photo-grid";
+import { events, links, nextEvent } from "@/data/site";
 
 const involved = [
-  { href: "/builders", title: "Join the builder network", body: "Profile, jobs, demo slots" },
-  { href: "/hire", title: "Hire a builder", body: "Full-time, contract or projects" },
+  { href: "/talent", title: "Join the talent network", body: "Profile, opportunities, demo slots" },
   { href: "/partner", title: "Partner with us", body: "Host, sponsor, give credits" },
   { href: "/events#speak", title: "Speak or demo", body: "Apply for a slot" },
 ];
@@ -18,19 +18,42 @@ function Sidebar() {
           <span className="flex items-center gap-2 font-medium">
             <span className="size-2 rounded-full bg-pink" /> Next meetup
           </span>
-          <span className="text-fg/50">RSVP on Partiful</span>
+          <span className="text-fg/50">Limited spots</span>
         </div>
         <div className="space-y-4 bg-fg p-4 text-white">
-          <p className="text-[15px] leading-snug text-white/80">
-            Demos, talks and build time with Philly&apos;s AI builders. Spots are limited.
+          <p className="text-[13px]">
+            <span className="font-medium">{nextEvent.date}</span>
+            <span className="ml-1.5 text-white/50">{nextEvent.day}</span>
           </p>
+          <a
+            href={links.rsvp}
+            target="_blank"
+            rel="noreferrer"
+            className="flex gap-3 rounded-xl bg-white/[0.06] p-3 transition hover:bg-white/10"
+          >
+            <div className="min-w-0 flex-1">
+              <p className="text-[12px] text-white/50">{nextEvent.time}</p>
+              <p className="mt-1 font-medium leading-snug">{nextEvent.title}</p>
+              <p className="mt-0.5 text-[13px] leading-snug text-white/70">{nextEvent.subtitle}</p>
+              <p className="mt-2 text-[12px] text-white/50">
+                {nextEvent.venue}, {nextEvent.address}
+              </p>
+            </div>
+            <Image
+              src={nextEvent.image}
+              alt={`${nextEvent.title} flyer`}
+              width={72}
+              height={72}
+              className="size-[72px] shrink-0 rounded-lg object-cover"
+            />
+          </a>
           <a
             href={links.rsvp}
             target="_blank"
             rel="noreferrer"
             className="block rounded-lg bg-pink px-4 py-2.5 text-center text-sm font-medium transition hover:brightness-110"
           >
-            Save your spot
+            RSVP on Partiful
           </a>
         </div>
       </div>
@@ -100,19 +123,7 @@ export default function Home() {
               <span className="font-medium">Meetup {String(e.n).padStart(2, "0")}</span>
               <span className="ml-2 text-fg/50">{e.date}</span>
             </p>
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-              {e.photos.map((photo, i) => (
-                <div key={photo.src} className="relative aspect-[16/10] overflow-hidden rounded-lg bg-base-2">
-                  <Image
-                    src={photo.src}
-                    alt={`Vibe Code Philly meetup ${e.n}, photo ${i + 1}`}
-                    fill
-                    sizes="(min-width: 1024px) 280px, (min-width: 640px) 33vw, 50vw"
-                    className="object-cover object-[50%_30%]"
-                  />
-                </div>
-              ))}
-            </div>
+            <PhotoGrid photos={e.photos} title={`Vibe Code Philly Meetup ${String(e.n).padStart(2, "0")}`} date={e.date} />
           </section>
         ))}
       </div>

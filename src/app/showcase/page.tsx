@@ -18,7 +18,7 @@ export default function ShowcasePage() {
       >
         <p>
           Apps, agents, tools and experiments from the Vibe Code Philly community. Every project links back to
-          the builder who made it.
+          the person who made it.
         </p>
       </PageHeader>
 

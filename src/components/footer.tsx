@@ -9,8 +9,8 @@ export function Footer() {
         <div>
           <Image src="/wordmark-dark.png" alt="Vibe Code PHL" width={596} height={336} className="h-9 w-auto" />
           <p className="mt-5 max-w-sm text-sm text-fg/60">
-            A Philadelphia community for people who build with AI. Meetups, talks, build sessions — and a
-            network that connects builders with teams who need them.
+            A Philadelphia community for people who build with AI. Meetups, talks, build sessions and a
+            talent network.
           </p>
         </div>
         <div>
@@ -30,7 +30,7 @@ export function Footer() {
           <ul className="space-y-2 text-sm">
             <li>
               <a href={links.instagram} target="_blank" rel="noreferrer" className="text-fg/70 hover:text-fg">
-                Instagram — @vibecodephilly
+                Instagram @vibecodephilly
               </a>
             </li>
             {links.linkedin && (

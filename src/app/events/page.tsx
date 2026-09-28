@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SignupForm } from "@/components/form";
-import { Gallery } from "@/components/gallery";
+import { PhotoGrid } from "@/components/photo-grid";
 import { Button, Container, PageHeader } from "@/components/ui";
 import { events, links, talks } from "@/data/site";
 
@@ -33,7 +33,7 @@ export default function EventsPage() {
                 {e.date}
               </time>
             </div>
-            <Gallery photos={e.photos} alt={`Vibe Code Philly event ${e.n}`} />
+            <PhotoGrid photos={e.photos} title={`Vibe Code Philly Meetup ${String(e.n).padStart(2, "0")}`} date={e.date} />
           </section>
         ))}
       </Container>
@@ -60,7 +60,7 @@ export default function EventsPage() {
               Show us what you built
             </h2>
             <p className="mt-6 text-fg/70">
-              Five-minute demos and 10–15 minute talks. Rough edges welcome — the best demos are the ones that
+              Five-minute demos and 10 to 15 minute talks. Rough edges welcome. The best demos are the ones that
               almost didn&apos;t work.
             </p>
           </div>
@@ -70,7 +70,7 @@ export default function EventsPage() {
             fields={[
               { name: "name", label: "Name", type: "text", required: true, half: true },
               { name: "email", label: "Email", type: "email", required: true, half: true },
-              { name: "format", label: "Format", type: "chips", options: ["5-min demo", "10–15 min talk", "Workshop"], single: true },
+              { name: "format", label: "Format", type: "chips", options: ["5-min demo", "10 to 15 min talk", "Workshop"], single: true },
               { name: "title", label: "Working title", type: "text", required: true },
               { name: "pitch", label: "What will people learn or see?", type: "textarea", required: true },
               { name: "link", label: "Link (project, repo, video)", type: "url", placeholder: "https://" },

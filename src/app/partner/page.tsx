@@ -6,7 +6,7 @@ import { Container, PageHeader } from "@/components/ui";
 export const metadata: Metadata = { title: "Partner" };
 
 const paths = [
-  { word: "Venues", body: "Host a meetup. We bring the builders, the programming, and the energy — you bring the room." },
+  { word: "Venues", body: "Host a meetup. We bring the community, the programming, and the energy. You bring the room." },
   { word: "Tools & sponsors", body: "Put your product in front of people who build with AI every day. Sponsor a night, offer credits, run a workshop." },
   { word: "Schools & orgs", body: "Co-host events, open pathways for students and career switchers, and grow Philly's AI talent together." },
 ];

@@ -2,7 +2,7 @@
 
 export type FormState = { ok: boolean; message: string } | null;
 
-const kinds = ["builder", "hire", "partner", "speak", "showcase"] as const;
+const kinds = ["talent", "partner", "speak", "showcase"] as const;
 type Kind = (typeof kinds)[number];
 
 export async function submitForm(_prev: FormState, formData: FormData): Promise<FormState> {
@@ -25,5 +25,5 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
   // TODO: persist to the database once one is provisioned (see README).
   console.log("[form submission]", JSON.stringify(entry));
 
-  return { ok: true, message: "Got it — we'll be in touch." };
+  return { ok: true, message: "Got it. We'll be in touch." };
 }

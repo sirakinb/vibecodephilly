@@ -10,11 +10,11 @@ const interTight = Inter_Tight({ variable: "--font-inter-tight", subsets: ["lati
 
 export const metadata: Metadata = {
   title: {
-    default: "Vibe Code Philly — Where Philly builds with AI",
+    default: "Vibe Code Philly",
     template: "%s · Vibe Code Philly",
   },
   description:
-    "Monthly meetups, talks and build sessions for Philadelphia's AI builders — and a talent network connecting them with teams that need people who build with AI.",
+    "Meetups, talks and build sessions for people in Philadelphia who make things with AI, plus a talent network for the community.",
   openGraph: { images: ["/events/e3-01.jpg"] },
 };
 
