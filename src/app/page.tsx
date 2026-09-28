@@ -1,16 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Gallery } from "@/components/gallery";
+import { HeroVideo } from "@/components/hero-video";
 import { Button, Container, PinkDot } from "@/components/ui";
 import { events, links, talks } from "@/data/site";
-
-const mosaic = [
-  { src: "/events/e3-01.jpg", cls: "col-span-2 row-span-2" },
-  { src: "/events/e1-17.jpg", cls: "" },
-  { src: "/events/e3-05.jpg", cls: "row-span-2" },
-  { src: "/events/e4-01.jpg", cls: "col-span-2 row-span-2" },
-  { src: "/events/e2-11.jpg", cls: "" },
-];
 
 const formats = [
   { n: "01", title: "Demos", body: "Builders put what they shipped this month on the big screen — working apps, half-finished experiments, all of it." },
@@ -45,57 +38,45 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <Container className="pt-16 pb-12 md:pt-24">
-        <p className="label mb-8">
-          <span className="text-pink">●</span> Philadelphia · Since Sept 2025
-        </p>
-        <h1 className="display text-[15vw] leading-[0.88] md:text-[8.5rem]">
-          Where Philly
-          <br />
-          builds with <em className="text-pink not-italic">AI</em>
-          <PinkDot />
-        </h1>
-        <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
-          <p className="max-w-xl text-lg text-fg/70 md:text-xl">
-            Meetups, talks and build nights for vibe coders, founders and engineers shipping with Cursor, Claude
-            Code, Lovable and whatever drops next — plus a talent network that turns builders into hires.
+      <section className="relative isolate flex min-h-[calc(100svh-4rem)] items-end overflow-hidden bg-fg text-white">
+        <HeroVideo />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
+        <Container className="relative w-full pb-12 md:pb-16">
+          <p className="label mb-6 !text-white/70">
+            <span className="text-pink">●</span> Philadelphia · Since Sept 2025
           </p>
-          <div className="flex flex-wrap gap-3 md:justify-end">
-            <Button href={links.rsvp}>RSVP for the next event →</Button>
-            <Button href="/builders" variant="ghost">
-              Join the builder network
-            </Button>
-          </div>
-        </div>
-      </Container>
-
-      {/* Photo mosaic */}
-      <Container className="pb-24">
-        <div className="grid grid-flow-dense auto-rows-[150px] grid-cols-2 gap-3 md:auto-rows-[200px] md:grid-cols-6">
-          {mosaic.map((m, i) => (
-            <div key={m.src} className={`relative overflow-hidden rounded-xl bg-base-2 ${m.cls}`}>
-              <Image
-                src={m.src}
-                alt="Vibe Code Philly meetup"
-                fill
-                sizes="(min-width: 768px) 33vw, 100vw"
-                className="object-cover transition duration-700 hover:scale-105"
-                priority={i < 2}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="mt-6 flex flex-wrap gap-x-10 gap-y-3 border-t border-fg/10 pt-6">
-          {[
-            [`${String(events.length).padStart(2, "0")}`, "meetups hosted"],
-            ["All levels", "first-timers welcome"],
-          ].map(([a, b]) => (
-            <p key={b} className="text-sm text-fg/60">
-              <span className="display mr-2 text-2xl text-fg">{a}</span>
-              {b}
+          <h1 className="display text-[15vw] leading-[0.9] md:text-[8rem]">
+            Where Philly
+            <br />
+            builds with <span className="text-pink">AI</span>
+            <PinkDot />
+          </h1>
+          <div className="mt-8 grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
+            <p className="max-w-xl text-lg text-white/80 md:text-xl">
+              Meetups, talks and build nights for vibe coders, founders and engineers shipping with Cursor, Claude
+              Code, Lovable and whatever drops next — plus a talent network that turns builders into hires.
             </p>
-          ))}
-        </div>
+            <div className="flex flex-wrap gap-3 md:justify-end">
+              <Button href={links.rsvp}>RSVP for the next event →</Button>
+              <Button href="/builders" variant="inverse">
+                Join the builder network
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Stats */}
+      <Container className="flex flex-wrap gap-x-10 gap-y-3 py-8">
+        {[
+          [`${String(events.length).padStart(2, "0")}`, "meetups hosted"],
+          ["All levels", "first-timers welcome"],
+        ].map(([a, b]) => (
+          <p key={b} className="text-sm text-fg/60">
+            <span className="display mr-2 text-2xl text-fg">{a}</span>
+            {b}
+          </p>
+        ))}
       </Container>
 
       {/* What happens */}
