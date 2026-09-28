@@ -94,7 +94,7 @@ export default function TalentPage() {
             {
               title: "What you're looking for",
               fields: [
-                { name: "looking", label: "Open to", type: "chips", options: ["Full-time roles", "Freelance / contract", "Co-founders", "Collaborators", "Learning", "Just the community"] },
+                { name: "looking", label: "Open to", type: "chips", options: ["Full-time roles", "Freelance", "Co-founders", "Collaborators", "Learning", "Community"] },
                 { name: "about", label: "Anything else we should know?", type: "textarea", max: 500, placeholder: "What you're working on, what you want to learn, what you'd like help with." },
               ],
             },

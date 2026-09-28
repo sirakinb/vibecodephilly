@@ -52,9 +52,13 @@ function TextArea({ field }: { field: Extract<Field, { type: "textarea" }> }) {
 
 function Chips({ field }: { field: Extract<Field, { type: "chips" }> }) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
       {field.options.map((o) => (
-        <label key={o} className="cursor-pointer">
+        <label
+          key={o}
+          className="flex cursor-pointer items-center gap-2.5 rounded-lg border border-fg/12 bg-white px-3 py-2.5 text-[14px] text-fg/80 transition
+            hover:border-fg/30 has-checked:border-fg/60 has-checked:text-fg has-focus-visible:ring-4 has-focus-visible:ring-pink/15"
+        >
           <input
             type={field.single ? "radio" : "checkbox"}
             name={field.name}
@@ -63,13 +67,14 @@ function Chips({ field }: { field: Extract<Field, { type: "chips" }> }) {
             className="peer sr-only"
           />
           <span
-            className="inline-flex items-center gap-1.5 rounded-full border border-fg/15 bg-white px-3.5 py-1.5 text-[13px] text-fg/75 transition
-              hover:border-fg/35 peer-checked:border-fg peer-checked:bg-fg peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-pink/20
-              [&>svg]:hidden peer-checked:[&>svg]:block"
+            className={`grid size-4 shrink-0 place-items-center border border-fg/25 bg-white text-white transition
+              peer-checked:border-fg peer-checked:bg-fg [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100 ${
+                field.single ? "rounded-full" : "rounded-[4px]"
+              }`}
           >
-            <Check size={13} strokeWidth={2.5} />
-            {o}
+            <Check size={11} strokeWidth={3} />
           </span>
+          <span className="min-w-0 leading-snug">{o}</span>
         </label>
       ))}
     </div>
@@ -126,7 +131,7 @@ function Success({ title, body }: { title: string; body: string }) {
           href={links.rsvp}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full bg-fg px-4 py-2 text-[13px] font-medium text-white transition hover:bg-fg/85"
+          className="rounded-lg bg-fg px-4 py-2 text-[13px] font-medium text-white transition hover:bg-fg/85"
         >
           RSVP for {nextEvent.date}
         </a>
@@ -134,7 +139,7 @@ function Success({ title, body }: { title: string; body: string }) {
           href={links.instagram}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-fg/15 px-4 py-2 text-[13px] font-medium transition hover:border-fg/35"
+          className="rounded-lg border border-fg/15 px-4 py-2 text-[13px] font-medium transition hover:border-fg/35"
         >
           Follow @vibecodephilly
         </a>
@@ -187,11 +192,11 @@ export function SignupForm({
             <button
               type="submit"
               disabled={pending}
-              className="inline-flex items-center gap-2 rounded-full bg-pink px-5 py-2.5 text-[13px] font-medium text-white transition hover:brightness-110 disabled:opacity-60"
+              className="inline-flex h-10 items-center gap-2 rounded-lg bg-fg px-4 text-[13px] font-medium text-white transition hover:bg-fg/85 disabled:opacity-60"
             >
               {pending && <Loader2 size={15} className="animate-spin" />}
               {pending ? "Sending" : submit}
-              {!pending && <ArrowRight size={15} />}
+              {!pending && <ArrowRight size={14} className="text-white/60" />}
             </button>
           </div>
         </form>
