@@ -14,6 +14,9 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
   if (!name || !/^\S+@\S+\.\S+$/.test(email)) {
     return { ok: false, message: "Add your name and a valid email." };
   }
+  if (kind === "talent" && formData.getAll("skills").length === 0) {
+    return { ok: false, message: "Pick at least one skill." };
+  }
 
   const entry: Record<string, string | string[]> = { kind, submittedAt: new Date().toISOString() };
   for (const key of new Set(formData.keys())) {

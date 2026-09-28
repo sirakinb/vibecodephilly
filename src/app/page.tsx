@@ -5,7 +5,7 @@ import { PhotoGrid } from "@/components/photo-grid";
 import { events, links, nextEvent } from "@/data/site";
 
 const involved = [
-  { href: "/talent", title: "Join the talent network", body: "Profile, opportunities, demo slots" },
+  { href: "/talent", title: "Join the talent network", body: "Profile, opportunities, intros" },
   { href: "/partner", title: "Partner with us", body: "Host, sponsor, give credits" },
   { href: "/events#speak", title: "Speak or demo", body: "Apply for a slot" },
 ];

@@ -2,30 +2,32 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { FormBlock, SignupForm } from "@/components/form";
 import { Container, PageHeader } from "@/components/ui";
-import { stacks } from "@/data/site";
 
 export const metadata: Metadata = { title: "Talent network" };
 
 const perks = [
-  { title: "A profile that shows your work", body: "Not a résumé. A page of what you've actually made, linked to demos, projects and live apps." },
+  { title: "A profile built around your skills", body: "Show what you're great at, whether that's development, design, marketing, operations or something else." },
   { title: "Opportunities first", body: "Roles, contract work and collaborations that come through the community reach the network first." },
-  { title: "The stage", body: "Priority demo and talk slots at meetups, so the right people see what you do." },
+  { title: "Introductions", body: "We connect you with people who need what you do, and people who can help you grow." },
   { title: "Credits & tools", body: "Perks and credits from the AI tools our partners make." },
 ];
 
+const skills = ["Development", "Design", "Marketing", "Sales", "Operations", "Product", "Content / creative", "Data / analytics", "Other"];
+const tools = ["ChatGPT", "Claude", "Gemini", "Cursor", "Claude Code", "Lovable", "Midjourney", "n8n / Zapier", "Other"];
+
 const steps = [
-  ["Join", "Tell us who you are and what you work on. Takes two minutes."],
-  ["Show up", "Come to meetups, demo something, add your work to the showcase."],
+  ["Join", "Tell us about your skills and what you're looking for. Takes two minutes."],
+  ["Show up", "Come to meetups, meet people and let the community get to know you."],
   ["Get connected", "When an opportunity fits you, we make the intro."],
 ];
 
 export default function TalentPage() {
   return (
     <>
-      <PageHeader eyebrow="Talent network" title="Get seen for what you make">
+      <PageHeader eyebrow="Talent network" title="Get known for your skills">
         <p>
-          Developers, designers, marketers, founders, operators, students and career switchers. If you use AI to
-          make things, the Vibe Code Philly talent network is for you. Free to join.
+          Whatever your skill set, whether you develop, design, market, sell or operate, the Vibe Code Philly
+          talent network connects you with opportunities and people across the community. Free to join.
         </p>
       </PageHeader>
 
@@ -65,7 +67,7 @@ export default function TalentPage() {
         id="join"
         eyebrow="Join the network"
         title="Create your profile"
-        intro={<p>Tell us who you are and what you work on. We read every one.</p>}
+        intro={<p>Tell us about your skills and what you&apos;re looking for. We read every one.</p>}
         points={["Free, always", "Takes about two minutes", "We only reach out when something fits"]}
       >
         <SignupForm
@@ -79,23 +81,23 @@ export default function TalentPage() {
               fields: [
                 { name: "name", label: "Full name", type: "text", required: true, half: true, placeholder: "Jordan Smith" },
                 { name: "email", label: "Email", type: "email", required: true, half: true, placeholder: "you@email.com" },
-                { name: "role", label: "What best describes you?", type: "chips", options: ["Developer", "Designer", "Marketer", "Founder", "Product / operator", "Creator", "Student", "Career switcher", "Other"] },
+                { name: "linkedin", label: "LinkedIn", type: "url", half: true, placeholder: "linkedin.com/in/you" },
+                { name: "portfolio", label: "Portfolio or website", type: "url", half: true, placeholder: "yoursite.com", hint: "Anywhere we can see your work." },
               ],
             },
             {
-              title: "Your work",
+              title: "Your skills",
               fields: [
-                { name: "linkedin", label: "LinkedIn", type: "url", half: true, placeholder: "linkedin.com/in/you" },
-                { name: "portfolio", label: "Portfolio or website", type: "url", half: true, placeholder: "yoursite.com" },
-                { name: "project", label: "Something you've made", type: "url", placeholder: "Link to a project, demo or video", hint: "Anything counts: an app, an automation, a site, a prototype." },
-                { name: "stack", label: "Tools you use", type: "chips", options: stacks },
+                { name: "skills", label: "What are you best at?", type: "chips", options: skills, required: true },
+                { name: "level", label: "Experience", type: "chips", options: ["Just starting", "A few years", "Seasoned"], single: true },
+                { name: "tools", label: "AI tools you use", type: "chips", options: tools },
               ],
             },
             {
               title: "What you're looking for",
               fields: [
-                { name: "looking", label: "Open to", type: "chips", options: ["Full-time roles", "Freelance", "Co-founders", "Collaborators", "Learning", "Community"] },
-                { name: "about", label: "Anything else we should know?", type: "textarea", max: 500, placeholder: "What you're working on, what you want to learn, what you'd like help with." },
+                { name: "looking", label: "Open to", type: "chips", options: ["Full-time roles", "Freelance", "Co-founders", "Collaborators", "Mentorship", "Community"] },
+                { name: "about", label: "Anything else we should know?", type: "textarea", max: 500, placeholder: "What you do, what you're working on, what you'd like help with." },
               ],
             },
           ]}
