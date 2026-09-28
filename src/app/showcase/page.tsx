@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SignupForm } from "@/components/form";
-import { Container, PageHeader, PinkDot } from "@/components/ui";
+import { Container, PageHeader } from "@/components/ui";
 import { stacks } from "@/data/site";
 
 export const metadata: Metadata = { title: "Showcase" };
@@ -12,7 +12,7 @@ export default function ShowcasePage() {
         eyebrow="Showcase"
         title={
           <>
-            Built in Philly<PinkDot />
+            Built in Philly
           </>
         }
       >
@@ -38,8 +38,8 @@ export default function ShowcasePage() {
       <section className="py-16">
         <Container className="max-w-4xl">
           <p className="label mb-4">Submit a project</p>
-          <h2 className="display mb-10 text-5xl md:text-6xl">
-            Shipped something? Show it<PinkDot />
+          <h2 className="display mb-10 text-3xl md:text-4xl">
+            Built something? Show it
           </h2>
           <SignupForm
             kind="showcase"

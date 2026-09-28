@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { SignupForm } from "@/components/form";
-import { Container, PageHeader, PinkDot } from "@/components/ui";
+import { Container, PageHeader } from "@/components/ui";
 
 export const metadata: Metadata = { title: "Partner" };
 
@@ -18,7 +18,7 @@ export default function PartnerPage() {
         eyebrow="Partner with us"
         title={
           <>
-            Help Philly build<PinkDot />
+            Help Philly build
           </>
         }
       >
@@ -32,7 +32,7 @@ export default function PartnerPage() {
         <div className="border-t border-fg/15">
           {paths.map((p) => (
             <div key={p.word} className="grid gap-3 border-b border-fg/15 py-8 md:grid-cols-2 md:items-center">
-              <p className="display text-5xl md:text-6xl">{p.word}</p>
+              <p className="display text-3xl md:text-4xl">{p.word}</p>
               <p className="text-fg/60 md:text-lg">{p.body}</p>
             </div>
           ))}
@@ -42,8 +42,8 @@ export default function PartnerPage() {
       <section className="border-t border-fg/10 py-24">
         <Container className="max-w-4xl">
           <p className="label mb-4">Get in touch</p>
-          <h2 className="display mb-10 text-5xl md:text-6xl">
-            Let&apos;s talk<PinkDot />
+          <h2 className="display mb-10 text-3xl md:text-4xl">
+            Let&apos;s talk
           </h2>
           <SignupForm
             kind="partner"

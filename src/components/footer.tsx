@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="border-t border-fg/10">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-[1.5fr_1fr_1fr] md:px-8">
         <div>
-          <Image src="/wordmark-dark.png" alt="Vibe Code PHL" width={596} height={336} className="h-14 w-auto" />
+          <Image src="/wordmark-dark.png" alt="Vibe Code PHL" width={596} height={336} className="h-9 w-auto" />
           <p className="mt-5 max-w-sm text-sm text-fg/60">
             A Philadelphia community for people who build with AI. Meetups, talks, build sessions — and a
             network that connects builders with teams who need them.

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { SignupForm } from "@/components/form";
-import { Container, PageHeader, PinkDot } from "@/components/ui";
+import { Container, PageHeader } from "@/components/ui";
 import { stacks } from "@/data/site";
 
 export const metadata: Metadata = { title: "Builders" };
 
 const perks = [
-  { title: "A profile that shows your work", body: "Not a résumé — a page of what you've actually shipped, linked to demos and live apps." },
+  { title: "A profile that shows your work", body: "Not a résumé — a page of what you've actually built, linked to demos and live apps." },
   { title: "Jobs & gigs, first", body: "Full-time roles, contract work and one-off builds from teams who come to us looking for builders." },
   { title: "The stage", body: "Priority demo and talk slots at meetups. Getting seen is half of getting hired." },
   { title: "Credits & tools", body: "Perks and credits from the AI tools our partners make, so you can build more for less." },
@@ -15,7 +15,7 @@ const perks = [
 
 const steps = [
   ["Join", "Tell us who you are and what you build with. Takes two minutes."],
-  ["Show up & ship", "Come to meetups, demo something, add projects to the showcase."],
+  ["Show up & build", "Come to meetups, demo something, add projects to the showcase."],
   ["Get matched", "When a team needs someone like you, we make the intro."],
 ];
 
@@ -26,7 +26,7 @@ export default function BuildersPage() {
         eyebrow="For builders"
         title={
           <>
-            Get seen for what you ship<PinkDot />
+            Get seen for what you build
           </>
         }
       >
@@ -71,8 +71,8 @@ export default function BuildersPage() {
       <section id="join" className="py-24">
         <Container className="max-w-4xl">
           <p className="label mb-4">Join the network</p>
-          <h2 className="display mb-10 text-5xl md:text-6xl">
-            Create your builder profile<PinkDot />
+          <h2 className="display mb-10 text-3xl md:text-4xl">
+            Create your builder profile
           </h2>
           <SignupForm
             kind="builder"
@@ -85,7 +85,7 @@ export default function BuildersPage() {
               { name: "stack", label: "What do you build with?", type: "chips", options: stacks },
               { name: "role", label: "I'm a…", type: "chips", options: ["Developer", "Designer", "Founder", "PM / operator", "Student", "Career switcher"] },
               { name: "looking", label: "Open to", type: "chips", options: ["Full-time roles", "Freelance / contract", "Co-founders", "Collaborators", "Just the community"] },
-              { name: "project", label: "Best thing you've shipped (link)", type: "url", placeholder: "https://" },
+              { name: "project", label: "Best thing you've built (link)", type: "url", placeholder: "https://" },
               { name: "about", label: "Tell us about it", type: "textarea", placeholder: "What it does, who uses it, how you built it." },
             ]}
           />

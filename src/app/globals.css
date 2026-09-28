@@ -46,8 +46,8 @@ body {
 .display {
   font-family: var(--font-inter-tight), system-ui, sans-serif;
   font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 
 @keyframes marquee {

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { SignupForm } from "@/components/form";
-import { Container, PageHeader, PinkDot } from "@/components/ui";
+import { Container, PageHeader } from "@/components/ui";
 
 export const metadata: Metadata = { title: "Hire builders" };
 
 const offers = [
-  { title: "Builders we've seen ship", body: "Everyone we introduce has demoed real work at our meetups or in our showcase. You see the product before the person." },
+  { title: "Builders we've seen in action", body: "Everyone we introduce has demoed real work at our meetups or in our showcase. You see the product before the person." },
   { title: "Full-time, contract or a project", body: "Hire someone onto the team, bring on a contractor, or get a specific tool or prototype built." },
   { title: "Post a bounty or challenge", body: "Put a real problem in front of the room at a build night and see who solves it." },
 ];
@@ -17,7 +17,7 @@ export default function HirePage() {
         eyebrow="For employers"
         title={
           <>
-            Hire people who ship<PinkDot />
+            Hire people who build with AI
           </>
         }
       >
@@ -39,8 +39,8 @@ export default function HirePage() {
       <section className="border-t border-fg/10 py-24">
         <Container className="max-w-4xl">
           <p className="label mb-4">Tell us what you need</p>
-          <h2 className="display mb-10 text-5xl md:text-6xl">
-            Find a builder<PinkDot />
+          <h2 className="display mb-10 text-3xl md:text-4xl">
+            Find a builder
           </h2>
           <SignupForm
             kind="hire"

@@ -18,7 +18,7 @@ export function SignupForm({ kind, fields, submit }: { kind: string; fields: Fie
     return (
       <div className="rounded-2xl border border-fg/10 bg-base-2 p-10 text-center">
         <p className="display text-4xl">
-          You&apos;re in<span className="text-pink">.</span>
+          You&apos;re in
         </p>
         <p className="mt-3 text-fg/60">{state.message}</p>
       </div>

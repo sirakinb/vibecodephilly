@@ -21,7 +21,7 @@ export function HeroVideo() {
       aria-hidden
       className="absolute inset-0 h-full w-full object-cover"
     >
-      <source src="/hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />
+      <source src="/hero-mobile.mp4" type="video/mp4" media="(max-width: 639px)" />
       <source src="/hero.mp4" type="video/mp4" />
     </video>
   );

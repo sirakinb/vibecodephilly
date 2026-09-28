@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s · Vibe Code Philly",
   },
   description:
-    "Monthly meetups, talks and build sessions for Philadelphia's AI builders — and a talent network connecting them with teams that need people who ship.",
+    "Monthly meetups, talks and build sessions for Philadelphia's AI builders — and a talent network connecting them with teams that need people who build with AI.",
   openGraph: { images: ["/events/e3-01.jpg"] },
 };
 

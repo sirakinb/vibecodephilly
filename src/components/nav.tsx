@@ -12,9 +12,9 @@ export function Nav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-fg/10 bg-base/85 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:px-8">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 md:px-8">
         <Link href="/" aria-label="Vibe Code Philly home" onClick={() => setOpen(false)}>
-          <Image src="/wordmark-dark.png" alt="Vibe Code PHL" width={596} height={336} className="h-9 w-auto" priority />
+          <Image src="/wordmark-dark.png" alt="Vibe Code PHL" width={596} height={336} className="h-7 w-auto" priority />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -22,7 +22,7 @@ export function Nav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm transition-colors hover:text-fg ${
+              className={`text-[13px] transition-colors hover:text-fg ${
                 pathname.startsWith(item.href) ? "text-fg" : "text-fg/60"
               }`}
             >
@@ -36,7 +36,7 @@ export function Nav() {
             href={links.rsvp}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-pink px-4 py-2 text-sm font-medium text-white transition hover:brightness-110"
+            className="rounded-full bg-pink px-4 py-1.5 text-[13px] font-medium text-white transition hover:brightness-110"
           >
             RSVP
           </a>

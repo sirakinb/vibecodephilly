@@ -34,16 +34,10 @@ export function Button({
 
 export function PageHeader({ eyebrow, title, children }: { eyebrow: string; title: ReactNode; children?: ReactNode }) {
   return (
-    <Container className="pt-20 pb-14 md:pt-28">
-      <p className="label mb-6">
-        <span className="text-pink">●</span> {eyebrow}
-      </p>
-      <h1 className="display max-w-5xl text-6xl md:text-8xl">{title}</h1>
+    <Container className="pt-14 pb-12 md:pt-20">
+      <p className="label mb-4">{eyebrow}</p>
+      <h1 className="display max-w-3xl text-4xl md:text-6xl">{title}</h1>
       {children && <div className="mt-8 max-w-2xl text-lg text-fg/70">{children}</div>}
     </Container>
   );
-}
-
-export function PinkDot() {
-  return <span className="text-pink">.</span>;
 }

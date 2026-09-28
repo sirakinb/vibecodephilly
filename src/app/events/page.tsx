@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SignupForm } from "@/components/form";
 import { Gallery } from "@/components/gallery";
-import { Button, Container, PageHeader, PinkDot } from "@/components/ui";
+import { Button, Container, PageHeader } from "@/components/ui";
 import { events, links, talks } from "@/data/site";
 
 export const metadata: Metadata = { title: "Events" };
@@ -13,7 +13,7 @@ export default function EventsPage() {
         eyebrow="Events"
         title={
           <>
-            Every meetup, in pictures<PinkDot />
+            Every meetup, in pictures
           </>
         }
       >
@@ -27,7 +27,7 @@ export default function EventsPage() {
         {events.map((e) => (
           <section key={e.n} id={`event-${e.n}`} className="scroll-mt-24">
             <div className="mb-8 grid gap-4 border-t border-fg/15 pt-8 md:grid-cols-[auto_1fr_auto] md:items-baseline md:gap-10">
-              <p className="display text-7xl text-pink">{String(e.n).padStart(2, "0")}</p>
+              <p className="display text-4xl text-pink">{String(e.n).padStart(2, "0")}</p>
               <p className="max-w-xl text-lg text-fg/70">{e.blurb}</p>
               <time dateTime={e.iso} className="label">
                 {e.date}
@@ -56,8 +56,8 @@ export default function EventsPage() {
         <Container className="grid gap-12 md:grid-cols-[1fr_1.4fr]">
           <div>
             <p className="label mb-4">Speak or demo</p>
-            <h2 className="display text-5xl md:text-6xl">
-              Show us what you built<PinkDot />
+            <h2 className="display text-3xl md:text-4xl">
+              Show us what you built
             </h2>
             <p className="mt-6 text-fg/70">
               Five-minute demos and 10–15 minute talks. Rough edges welcome — the best demos are the ones that
