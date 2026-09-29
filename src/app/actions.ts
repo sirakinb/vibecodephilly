@@ -88,7 +88,8 @@ async function syncToCrm(kind: Kind, name: string, email: string, entry: Record<
     // The upsert replaces tags and notes, so read the current contact first (an
     // identifier-only upsert changes nothing) and merge, so someone who joins as talent
     // and later submits a showcase keeps both tags and both notes.
-    const id = { source: "website", external_id: email.toLowerCase(), email };
+    // A name is required when the lookup ends up creating the contact.
+    const id = { source: "website", external_id: email.toLowerCase(), email, first_name: first };
     const { contact } = await call(id);
     const block = buildNotes(kind, entry);
     // Skip the block if this exact submission is already in the notes (a resubmit).
@@ -96,7 +97,6 @@ async function syncToCrm(kind: Kind, name: string, email: string, entry: Record<
     await call(
       {
         ...id,
-        first_name: first,
         last_name: rest.join(" ") || undefined,
         company: company || undefined,
         tags: [...new Set([...(contact.tags ?? []), "website", tagFor[kind]])],
