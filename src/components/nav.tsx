@@ -4,7 +4,7 @@ import { CalendarDays, Handshake, LayoutGrid, UsersRound, type LucideIcon } from
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { links, nav } from "@/data/site";
+import { links, nav, nextEvent } from "@/data/site";
 
 const icons: Record<(typeof nav)[number]["icon"], LucideIcon> = {
   events: CalendarDays,
@@ -52,12 +52,12 @@ export function Nav() {
         <Tabs className="absolute inset-y-0 left-1/2 hidden -translate-x-1/2 md:flex" />
 
         <a
-          href={links.rsvp}
+          href={nextEvent ? links.rsvp : links.instagram}
           target="_blank"
           rel="noreferrer"
           className="rounded-full bg-pink px-4 py-1.5 text-[13px] font-medium text-white transition hover:brightness-110"
         >
-          RSVP
+          {nextEvent ? "RSVP" : "Follow"}
         </a>
       </div>
 

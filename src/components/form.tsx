@@ -127,14 +127,16 @@ function Success({ title, body }: { title: string; body: string }) {
       <p className="display mt-5 text-2xl">{title}</p>
       <p className="mx-auto mt-2 max-w-sm text-[15px] text-fg/60">{body}</p>
       <div className="mt-8 flex flex-wrap justify-center gap-2">
-        <a
-          href={links.rsvp}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-lg bg-fg px-4 py-2 text-[13px] font-medium text-white transition hover:bg-fg/85"
-        >
-          RSVP for {nextEvent.date}
-        </a>
+        {nextEvent && (
+          <a
+            href={links.rsvp}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-lg bg-fg px-4 py-2 text-[13px] font-medium text-white transition hover:bg-fg/85"
+          >
+            RSVP for {nextEvent.date}
+          </a>
+        )}
         <a
           href={links.instagram}
           target="_blank"

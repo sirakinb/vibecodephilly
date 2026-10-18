@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { FormBlock, SignupForm } from "@/components/form";
 import { PhotoGrid } from "@/components/photo-grid";
 import { Button, Container, PageHeader } from "@/components/ui";
-import { events, links } from "@/data/site";
+import { events, links, nextEvent } from "@/data/site";
 
 export const metadata: Metadata = { title: "Events" };
 
@@ -17,9 +17,16 @@ export default function EventsPage() {
           </>
         }
       >
-        <p>Demos, talks and build nights across Philly. RSVPs for the next one live on Partiful.</p>
+        <p>
+          Demos, talks and build nights across Philly.{" "}
+          {nextEvent ? "RSVPs for the next one live on Partiful." : "The next date goes out on Instagram first."}
+        </p>
         <div className="mt-8">
-          <Button href={links.rsvp}>RSVP for the next event →</Button>
+          {nextEvent ? (
+            <Button href={links.rsvp}>RSVP for the next event →</Button>
+          ) : (
+            <Button href={links.instagram}>Follow @vibecodephilly →</Button>
+          )}
         </div>
       </PageHeader>
 

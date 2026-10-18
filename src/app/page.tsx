@@ -10,9 +10,41 @@ const involved = [
   { href: "/events#speak", title: "Speak or demo", body: "Apply for a slot" },
 ];
 
-function Sidebar() {
+function NextEventCard() {
+  if (!nextEvent) {
+    return (
+      <div className="overflow-hidden rounded-2xl border border-fg/10">
+        <div className="flex items-center justify-between border-b border-fg/10 px-4 py-3 text-[13px]">
+          <span className="flex items-center gap-2 font-medium">
+            <span className="size-2 rounded-full bg-fg/25" /> Next event
+          </span>
+        </div>
+        <div className="space-y-4 bg-fg p-4 text-white">
+          <p className="text-[13px]">
+            <span className="font-medium">TBD</span>
+            <span className="ml-1.5 text-white/50">Date coming soon</span>
+          </p>
+          <div className="rounded-xl bg-white/[0.06] p-3">
+            <p className="font-medium leading-snug">Event 07</p>
+            <p className="mt-0.5 text-[13px] leading-snug text-white/70">
+              We&apos;re planning the next one. Details go out on Instagram first.
+            </p>
+          </div>
+          <a
+            href={links.instagram}
+            target="_blank"
+            rel="noreferrer"
+            className="block rounded-lg bg-pink px-4 py-2.5 text-center text-sm font-medium transition hover:brightness-110"
+          >
+            Follow @vibecodephilly
+          </a>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="space-y-4">
+    <>
       <div className="overflow-hidden rounded-2xl border border-fg/10">
         <div className="flex items-center justify-between border-b border-fg/10 px-4 py-3 text-[13px]">
           <span className="flex items-center gap-2 font-medium">
@@ -66,6 +98,14 @@ function Sidebar() {
       >
         Follow @vibecodephilly
       </a>
+    </>
+  );
+}
+
+function Sidebar() {
+  return (
+    <div className="space-y-4">
+      <NextEventCard />
 
       <div className="pt-4">
         <p className="label mb-2">Get involved</p>

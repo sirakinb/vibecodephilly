@@ -4,6 +4,35 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Photo } from "@/data/site";
 
+// Silent looping clip that only plays while on screen.
+function Clip({ photo, className }: { photo: Photo; className: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? v.play().catch(() => {}) : v.pause()), {
+      threshold: 0.25,
+    });
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={ref}
+      src={photo.video}
+      poster={photo.src}
+      muted
+      loop
+      playsInline
+      preload="none"
+      aria-hidden
+      className={className}
+    />
+  );
+}
+
 export function PhotoGrid({ photos, title, date }: { photos: Photo[]; title: string; date: string }) {
   const [open, setOpen] = useState<number | null>(null);
   const touchX = useRef<number | null>(null);
@@ -29,6 +58,8 @@ export function PhotoGrid({ photos, title, date }: { photos: Photo[]; title: str
   }, [open, step]);
 
   const current = open === null ? null : photos[open];
+  // Portrait clips need taller tiles than the 16:10 photo crop.
+  const tile = photos.some((p) => p.video) ? "aspect-[4/5]" : "aspect-[16/10]";
 
   return (
     <>
@@ -38,15 +69,20 @@ export function PhotoGrid({ photos, title, date }: { photos: Photo[]; title: str
             key={photo.src}
             type="button"
             onClick={() => setOpen(i)}
-            className="relative aspect-[16/10] cursor-zoom-in overflow-hidden rounded-lg bg-base-2 focus-visible:outline-2 focus-visible:outline-pink"
+            className={`relative ${tile} cursor-zoom-in overflow-hidden rounded-lg bg-base-2 focus-visible:outline-2 focus-visible:outline-pink`}
+            aria-label={photo.video ? `${title}, clip ${i + 1}` : undefined}
           >
-            <Image
-              src={photo.src}
-              alt={`${title}, photo ${i + 1}`}
-              fill
-              sizes="(min-width: 1024px) 280px, (min-width: 640px) 33vw, 50vw"
-              className="object-cover object-[50%_30%] transition duration-300 hover:scale-[1.02]"
-            />
+            {photo.video ? (
+              <Clip photo={photo} className="absolute inset-0 h-full w-full object-cover" />
+            ) : (
+              <Image
+                src={photo.src}
+                alt={`${title}, photo ${i + 1}`}
+                fill
+                sizes="(min-width: 1024px) 280px, (min-width: 640px) 33vw, 50vw"
+                className="object-cover object-[50%_30%] transition duration-300 hover:scale-[1.02]"
+              />
+            )}
           </button>
         ))}
       </div>
@@ -67,17 +103,31 @@ export function PhotoGrid({ photos, title, date }: { photos: Photo[]; title: str
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0a0a0a] p-4 md:p-10"
         >
           <div className="relative flex min-h-0 w-full flex-1 items-center justify-center">
-            <Image
-              key={current.src}
-              src={current.src}
-              alt={`${title}, photo ${open + 1}`}
-              width={current.w}
-              height={current.h}
-              sizes="100vw"
-              className="max-h-full w-auto max-w-full object-contain"
-              onClick={(e) => e.stopPropagation()}
-              priority
-            />
+            {current.video ? (
+              <video
+                key={current.video}
+                src={current.video}
+                poster={current.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="max-h-full w-auto max-w-full rounded-lg object-contain"
+                onClick={(e) => e.stopPropagation()}
+              />
+            ) : (
+              <Image
+                key={current.src}
+                src={current.src}
+                alt={`${title}, photo ${open + 1}`}
+                width={current.w}
+                height={current.h}
+                sizes="100vw"
+                className="max-h-full w-auto max-w-full object-contain"
+                onClick={(e) => e.stopPropagation()}
+                priority
+              />
+            )}
           </div>
           <div className="mt-5 text-center text-sm" onClick={(e) => e.stopPropagation()}>
             <p className="text-white">{title}</p>

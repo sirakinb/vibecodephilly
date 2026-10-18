@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { links, nav } from "@/data/site";
+import { links, nav, nextEvent } from "@/data/site";
 
 export function Footer() {
   return (
@@ -40,11 +40,13 @@ export function Footer() {
                 </a>
               </li>
             )}
-            <li>
-              <a href={links.rsvp} target="_blank" rel="noreferrer" className="text-fg/70 hover:text-fg">
-                Next event on Partiful
-              </a>
-            </li>
+            {nextEvent && (
+              <li>
+                <a href={links.rsvp} target="_blank" rel="noreferrer" className="text-fg/70 hover:text-fg">
+                  Next event on Partiful
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </div>

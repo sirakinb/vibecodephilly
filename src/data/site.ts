@@ -1,6 +1,7 @@
 import photos from "./photos.json";
 
-export type Photo = { src: string; w: number; h: number };
+// `video` marks a silent looping clip; `src` is its poster frame.
+export type Photo = { src: string; w: number; h: number; video?: string };
 
 export const links = {
   rsvp: "https://partiful.com/e/zl6giZDvfTnFRP0I7l6Y",
@@ -8,16 +9,19 @@ export const links = {
   linkedin: "",
 };
 
-export const nextEvent = {
-  title: "Vibe Marketing",
-  subtitle: "Marketing in the Age of Agents",
-  day: "Saturday",
-  date: "Oct 17",
-  time: "12 to 3 PM",
-  venue: "iMunch Cafe",
-  address: "233 N 31st St",
-  image: "/next-event.jpg",
+export type NextEvent = {
+  title: string;
+  subtitle: string;
+  day: string;
+  date: string;
+  time: string;
+  venue: string;
+  address: string;
+  image: string;
 };
+
+// Set to null between events; the sidebar then shows a TBD card.
+export const nextEvent: NextEvent | null = null;
 
 export const nav = [
   { href: "/events", label: "Events", icon: "events" },
@@ -44,10 +48,16 @@ const p: Record<string, Photo[]> = {
   "3": pick(3, [1, 5, 9, 4, 8, 10, 11, 2, 7, 3, 6, 12]),
   "4": pick(4, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
   "5": pick(5, [1, 4, 2, 5, 6, 3]),
+  // Event 6 was captured on video only.
+  "6": [1, 2, 3, 4, 5, 6].map((i) => {
+    const f = `/events/e6-${String(i).padStart(2, "0")}`;
+    return { src: `${f}.jpg`, video: `${f}.mp4`, w: 720, h: 1280 };
+  }),
 };
 
 // Newest first.
 export const events: EventRecap[] = [
+  { n: 6, date: "October 17, 2026", iso: "2026-10-17", blurb: "Vibe Marketing at iMunch Cafe: marketing in the age of agents.", photos: p["6"] },
   { n: 5, date: "June 20, 2026", iso: "2026-06-20", blurb: "Talks, demos and build time.", photos: p["5"] },
   { n: 4, date: "April 22, 2026", iso: "2026-04-22", blurb: "A full room of developers, founders and first-timers working side by side.", photos: p["4"] },
   { n: 3, date: "March 28, 2026", iso: "2026-03-28", blurb: "Live demos on the big screen and a full afternoon of building.", photos: p["3"] },
