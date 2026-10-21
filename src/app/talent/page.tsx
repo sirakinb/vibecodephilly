@@ -13,7 +13,7 @@ const perks = [
 ];
 
 const skills = ["Development", "Design", "Marketing", "Sales", "Operations", "Product", "Content / creative", "Data / analytics", "Other"];
-const tools = ["ChatGPT", "Claude", "Gemini", "Cursor", "Claude Code", "Lovable", "Midjourney", "n8n / Zapier", "Other"];
+const tools = ["Claude Code", "Codex", "Cursor", "Devin", "VS Code", "n8n / Zapier / Make", "Grok Bot", "Muse", "Other"];
 
 const steps = [
   ["Join", "Tell us about your skills and what you're looking for. Takes two minutes."],

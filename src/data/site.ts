@@ -4,7 +4,7 @@ import photos from "./photos.json";
 export type Photo = { src: string; w: number; h: number; video?: string };
 
 export const links = {
-  rsvp: "https://partiful.com/e/zl6giZDvfTnFRP0I7l6Y",
+  rsvp: "https://partiful.com/e/hqWkFzikB1frVdihGKTE",
   instagram: "https://instagram.com/vibecodephilly",
   linkedin: "",
 };
@@ -21,7 +21,16 @@ export type NextEvent = {
 };
 
 // Set to null between events; the sidebar then shows a TBD card.
-export const nextEvent: NextEvent | null = null;
+export const nextEvent: NextEvent | null = {
+  title: "Breakfast and Building",
+  subtitle: "A monthly morning of building with AI",
+  day: "Saturday",
+  date: "Nov 14",
+  time: "9 AM to 12 PM",
+  venue: "iMunch Cafe",
+  address: "1233 N 31st St",
+  image: "/breakfast-and-building.jpg",
+};
 
 export const nav = [
   { href: "/events", label: "Events", icon: "events" },
