@@ -63,7 +63,7 @@ export default function PartnerPage() {
             {
               title: "The idea",
               fields: [
-                { name: "type", label: "Interested in", type: "chips", options: ["Hosting an event", "Sponsoring", "Credits / perks", "Running a workshop", "Something else"] },
+                { name: "type", label: "Interested in", type: "chips", options: ["Hosting an event", "Sponsoring", "Credits / perks", "Running a workshop", "Something else"], other: "What do you have in mind?" },
                 { name: "details", label: "Tell us more", type: "textarea", max: 800, placeholder: "Dates, audience, what you'd like to do together." },
               ],
             },

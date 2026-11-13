@@ -10,7 +10,8 @@ type Base = { name: string; label: string; hint?: string; required?: boolean };
 export type Field =
   | (Base & { type: "text" | "email" | "url"; placeholder?: string; half?: boolean })
   | (Base & { type: "textarea"; placeholder?: string; max?: number })
-  | (Base & { type: "chips"; options: string[]; single?: boolean });
+  // `other` is the placeholder for a write-in box shown when the last option is checked.
+  | (Base & { type: "chips"; options: string[]; single?: boolean; other?: string });
 
 export type FormSection = { title: string; fields: Field[] };
 
@@ -51,33 +52,54 @@ function TextArea({ field }: { field: Extract<Field, { type: "textarea" }> }) {
 }
 
 function Chips({ field }: { field: Extract<Field, { type: "chips" }> }) {
+  const last = field.options[field.options.length - 1];
+  const [otherOn, setOtherOn] = useState(false);
   return (
-    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-      {field.options.map((o) => (
-        <label
-          key={o}
-          className="flex cursor-pointer items-center gap-2.5 rounded-lg border border-fg/12 bg-white px-3 py-2.5 text-[14px] text-fg/80 transition
-            hover:border-fg/30 has-checked:border-fg/60 has-checked:text-fg has-focus-visible:ring-4 has-focus-visible:ring-pink/15"
-        >
-          <input
-            type={field.single ? "radio" : "checkbox"}
-            name={field.name}
-            value={o}
-            required={field.single && field.required}
-            className="peer sr-only"
-          />
-          <span
-            className={`grid size-4 shrink-0 place-items-center border border-fg/25 bg-white text-white transition
-              peer-checked:border-fg peer-checked:bg-fg [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100 ${
-                field.single ? "rounded-full" : "rounded-[4px]"
-              }`}
+    <>
+      <div
+        className="grid grid-cols-2 gap-2 sm:grid-cols-3"
+        onChange={(e) => {
+          const t = e.target as HTMLInputElement;
+          if (t.value === last) setOtherOn(t.checked);
+          else if (field.single) setOtherOn(false);
+        }}
+      >
+        {field.options.map((o) => (
+          <label
+            key={o}
+            className="flex cursor-pointer items-center gap-2.5 rounded-lg border border-fg/12 bg-white px-3 py-2.5 text-[14px] text-fg/80 transition
+              hover:border-fg/30 has-checked:border-fg/60 has-checked:text-fg has-focus-visible:ring-4 has-focus-visible:ring-pink/15"
           >
-            <Check size={11} strokeWidth={3} />
-          </span>
-          <span className="min-w-0 leading-snug">{o}</span>
-        </label>
-      ))}
-    </div>
+            <input
+              type={field.single ? "radio" : "checkbox"}
+              name={field.name}
+              value={o}
+              required={field.single && field.required}
+              className="peer sr-only"
+            />
+            <span
+              className={`grid size-4 shrink-0 place-items-center border border-fg/25 bg-white text-white transition
+                peer-checked:border-fg peer-checked:bg-fg [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100 ${
+                  field.single ? "rounded-full" : "rounded-[4px]"
+                }`}
+            >
+              <Check size={11} strokeWidth={3} />
+            </span>
+            <span className="min-w-0 leading-snug">{o}</span>
+          </label>
+        ))}
+      </div>
+      {field.other && otherOn && (
+        <input
+          name={`${field.name}Other`}
+          aria-label={`${field.label}: ${last}`}
+          placeholder={field.other}
+          maxLength={200}
+          autoFocus
+          className={`${control} mt-2 h-11 px-3.5`}
+        />
+      )}
+    </>
   );
 }
 

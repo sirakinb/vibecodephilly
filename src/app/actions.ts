@@ -128,6 +128,15 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
     const values = formData.getAll(key).map(String);
     entry[key] = values.length > 1 ? values : values[0];
   }
+  // Fold write-ins (e.g. toolsOther) into their chip list: "Other" becomes "Other: <text>".
+  for (const key of Object.keys(entry).filter((k) => k.endsWith("Other"))) {
+    const text = String(entry[key]).trim();
+    const base = key.slice(0, -"Other".length);
+    delete entry[key];
+    if (!text || !(base in entry)) continue;
+    const picked = ([] as string[]).concat(entry[base]);
+    entry[base] = picked.map((v, i) => (i === picked.length - 1 ? `${v}: ${text}` : v));
+  }
 
   // Always keep a copy in the logs so a CRM outage never loses a lead.
   console.log("[form submission]", JSON.stringify(entry));
