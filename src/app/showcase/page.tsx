@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { FormBlock, SignupForm } from "@/components/form";
 import { Container, PageHeader } from "@/components/ui";
-import { stacks } from "@/data/site";
+import { otherTool, stacks } from "@/data/site";
 
 export const metadata: Metadata = { title: "Showcase" };
 
@@ -59,7 +59,7 @@ export default function ShowcasePage() {
               fields: [
                 { name: "project", label: "Project name", type: "text", required: true, half: true, placeholder: "What's it called?" },
                 { name: "url", label: "Live link", type: "url", required: true, half: true, placeholder: "yourproject.com" },
-                { name: "stack", label: "Built with", type: "chips", options: stacks },
+                { name: "stack", label: "Built with", type: "chips", options: stacks, other: otherTool },
                 { name: "description", label: "What does it do?", type: "textarea", required: true, max: 400, placeholder: "One or two sentences." },
               ],
             },

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { FormBlock, SignupForm } from "@/components/form";
 import { Container, PageHeader } from "@/components/ui";
+import { otherTool, tools } from "@/data/site";
 
 export const metadata: Metadata = { title: "Talent network" };
 
@@ -13,7 +14,6 @@ const perks = [
 ];
 
 const skills = ["Development", "Design", "Marketing", "Sales", "Operations", "Product", "Content / creative", "Data / analytics", "Other"];
-const tools = ["Claude / Claude Code", "ChatGPT / Codex", "Cursor", "T3 Code", "Devin", "n8n / Zapier / Make", "Grok Bot", "Muse", "Other"];
 
 const steps = [
   ["Join", "Tell us about your skills and what you're looking for. Takes two minutes."],
@@ -90,7 +90,7 @@ export default function TalentPage() {
               fields: [
                 { name: "skills", label: "What are you best at?", type: "chips", options: skills, required: true },
                 { name: "level", label: "Experience", type: "chips", options: ["Just starting", "A few years", "Seasoned"], single: true },
-                { name: "tools", label: "AI tools you use", type: "chips", options: tools, other: "Custom ADE, agent, another tool, etc." },
+                { name: "tools", label: "AI tools you use", type: "chips", options: tools, other: otherTool },
               ],
             },
             {

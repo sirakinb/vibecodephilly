@@ -75,4 +75,7 @@ export const events: EventRecap[] = [
 ];
 
 
-export const stacks = ["Cursor", "Claude Code", "Lovable", "Replit", "Bolt", "v0", "Codex", "n8n", "Other"];
+// Talent "AI tools you use"; the showcase "Built with" list is the same plus Replit.
+export const tools = ["Claude / Claude Code", "ChatGPT / Codex", "Cursor", "T3 Code", "Lovable", "n8n / Zapier / Make", "Grok Bot", "Muse", "Other"];
+export const stacks = tools.flatMap((t) => (t === "Lovable" ? [t, "Replit"] : [t]));
+export const otherTool = "Custom ADE, agent, another tool, etc.";
